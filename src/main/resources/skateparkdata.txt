@@ -1,1 +1,0 @@
-skatepark data scrap = https://skateparkhunter.com/wp-content/uploads/javo_all_items_1_.json

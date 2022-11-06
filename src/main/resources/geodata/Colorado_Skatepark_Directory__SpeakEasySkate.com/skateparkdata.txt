@@ -1,0 +1,5 @@
+Created @ https://mygeodata.cloud/
+
+Output format: GeoJSON
+Output coordinate system: EPSG:4326
+Total files: 3
