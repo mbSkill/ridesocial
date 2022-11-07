@@ -12,7 +12,4 @@ public class UserProfile extends User{
     String bio;
     String stance;
     String photo;
-    @ManyToOne
-    @JoinColumn(name = "favorite_park_address")
-    Park favoritePark;
 }
