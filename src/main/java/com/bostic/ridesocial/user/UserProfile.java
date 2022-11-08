@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class UserProfile extends User{
+public class UserProfile {
 
     String bio;
     String stance;

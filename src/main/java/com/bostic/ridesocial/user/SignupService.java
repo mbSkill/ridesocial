@@ -11,6 +11,7 @@ public class SignupService {
     boolean validateEmail(String email){
         var RFCemailPattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
         var matcher = RFCemailPattern.matcher(email);
+        System.out.println(matcher.matches());
         return matcher.matches();
     }
 
@@ -28,8 +29,6 @@ public class SignupService {
 
     public User saveNewUser(User user){
         /**
-         * TODO: validate format of email
-         * TODO: Check if email exists
          * TODO: validate password matches requirements
          * TODO: check if username exists
          **/
