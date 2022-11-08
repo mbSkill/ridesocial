@@ -2,23 +2,27 @@ package com.bostic.ridesocial.user;
 
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Pattern;
+
 @Service
 public class SignupService {
     UserRepository repository;
 
-    private boolean validateEmail(String email){
+    boolean validateEmail(String email){
+        var RFCemailPattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
+        var matcher = RFCemailPattern.matcher(email);
+        return matcher.matches();
+    }
+
+    boolean emailExists(String email){
+        return repository.existsById(email);
+    }
+
+    boolean validatePassword(){
         return true;
     }
 
-    private boolean emailExists(String email){
-        return true;
-    }
-
-    private boolean validatePassword(){
-        return true;
-    }
-
-    private boolean isUniqueUsername(){
+    boolean isUniqueUsername(){
         return true;
     }
 

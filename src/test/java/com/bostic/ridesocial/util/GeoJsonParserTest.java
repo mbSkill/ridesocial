@@ -14,7 +14,6 @@ class GeoJsonParserTest {
 
     @Test
     @DisplayName("Has only Skatepark objects")
-
     void parseFromFile() throws IOException {
         var list = GeoJsonParser.parseFromFile(path);
         list.forEach(park ->
