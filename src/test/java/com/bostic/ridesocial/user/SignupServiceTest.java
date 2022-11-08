@@ -33,4 +33,20 @@ class SignupServiceTest {
                 repository.existsById("SLK@j.com"));
     }
 
+    @Test
+    @DisplayName("Check that password has one or more:" +
+            "number, lowercase, uppercase, special character with a length between 8-32")
+    void passwordValidator(){
+        assertTrue(signupService.validatePassword("0Number@theStart"), "Valid password");
+        assertFalse(signupService.validatePassword("#nouppercase1"),"No uppercase characters");
+        assertFalse(signupService.validatePassword("#NOLOWERCASE1"),"No lowercase characters");
+        assertFalse(signupService.validatePassword("NoSymbolInPhrase1"),"No symbol characters");
+        assertFalse(signupService.validatePassword("NoDiget@inPhrase"),"No digit in String");
+        assertFalse(signupService.validatePassword("1234@#$%"),"No letters in Phrase");
+        assertFalse(signupService.validatePassword("eE1!"),
+                "Password is shorter than 8 characters but meets other requirements");
+        assertTrue(signupService.validatePassword("ThisPassWillBeToLong*#*JkNBELKMSNLSkdsaj"),
+                "Password is longer than 32 characters but meets other requirements");
+    }
+
 }
