@@ -9,8 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class SignupServiceTest {
-    @Autowired SignupService signupService;
+class UserServiceTest {
+    @Autowired
+    UserService userService;
     @Autowired UserRepository repository;
 
     User user = new User();
@@ -18,9 +19,9 @@ class SignupServiceTest {
     @Test
     @DisplayName("has email postfix")
     void userEmailHasCorrectPostfix(){
-        assertTrue(signupService.validateEmail("cool@cool.com"));
-        assertFalse(signupService.validateEmail("cool"), "Missing both @ and .");
-        assertFalse(signupService.validateEmail("cool@"), "Missing domain.com");
+        assertTrue(userService.validateEmail("cool@cool.com"));
+        assertFalse(userService.validateEmail("cool"), "Missing both @ and .");
+        assertFalse(userService.validateEmail("cool@"), "Missing domain.com");
     }
 
     @Test
@@ -37,14 +38,14 @@ class SignupServiceTest {
     @DisplayName("Check that password has one or more:" +
             "number, lowercase, uppercase, special character with a length between 8-32")
     void passwordValidator(){
-        assertTrue(signupService.validatePassword("Th1zP@zzWorks!"), "Valid password");
-        assertFalse(signupService.validatePassword("NoSymbolInPhrase1"),"No symbol characters");
-        assertFalse(signupService.validatePassword("NoDiget@inPhrase"),"No digit in String");
-        assertFalse(signupService.validatePassword("NoDiget@inPhrase"),"No digit in String");
-        assertFalse(signupService.validatePassword("1234@#$%"),"No letters in Phrase");
-        assertFalse(signupService.validatePassword("eE1!"),
+        assertTrue(userService.validatePassword("Th1zP@zzWorks!"), "Valid password");
+        assertFalse(userService.validatePassword("NoSymbolInPhrase1"),"No symbol characters");
+        assertFalse(userService.validatePassword("NoDiget@inPhrase"),"No digit in String");
+        assertFalse(userService.validatePassword("NoDiget@inPhrase"),"No digit in String");
+        assertFalse(userService.validatePassword("1234@#$%"),"No letters in Phrase");
+        assertFalse(userService.validatePassword("eE1!"),
                 "Password is shorter than 8 characters but meets other requirements");
-        assertFalse(signupService.validatePassword("ThisPassWillBeToLong*#*JkNBELKMSNLSkdsaj"),
+        assertFalse(userService.validatePassword("ThisPassWillBeToLong*#*JkNBELKMSNLSkdsaj"),
                 "Password is longer than 32 characters but meets other requirements");
     }
 

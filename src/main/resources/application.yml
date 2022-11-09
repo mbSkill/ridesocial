@@ -9,3 +9,10 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    azure:
+      storage:
+        blob:
+          account-name: ${accountName}
+          account-key: ${key}
+          endpoint: ${blobEndpoint}

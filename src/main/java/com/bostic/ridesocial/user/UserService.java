@@ -2,11 +2,13 @@ package com.bostic.ridesocial.user;
 
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Pattern;
-
 @Service
-public class SignupService {
+public class UserService {
     UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     boolean validateEmail(String email){
         String regex = "^" +
@@ -17,7 +19,7 @@ public class SignupService {
         return email.matches(regex);
     }
 
-    boolean emailExists(String email){
+    public boolean emailExists(String email){
         return repository.existsById(email);
     }
 
@@ -29,7 +31,7 @@ public class SignupService {
 
     boolean isUniqueUsername(String username){
         return username.isBlank() ? Boolean.FALSE :
-                repository.existsByUsername(username);
+                !repository.existsByUsername(username);
     }
 
     public User saveNewUser(User user){
@@ -39,7 +41,6 @@ public class SignupService {
             isUniqueUsername(user.getUsername())){
             return repository.save(user);
         }
-
         return new User();
     }
 }

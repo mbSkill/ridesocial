@@ -3,7 +3,7 @@ package com.bostic.ridesocial.post;
 import com.bostic.ridesocial.user.User;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Post {
@@ -16,6 +16,6 @@ public class Post {
     User user;
     String image;
     String paragraph;
-    Date createdOn;
+    Timestamp createdOn;
 
 }

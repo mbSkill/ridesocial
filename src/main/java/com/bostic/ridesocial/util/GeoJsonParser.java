@@ -12,6 +12,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * JSON Structure
+ *  {"type": "",
+ *  "properties":
+ *   { "Name": "",
+ *     "description": "",
+ *     "gx_media_links": "" },
+ *     "geometry":
+ *       { "type": "",
+ *         "coordinates": [ ,  ]
+ *       }
+ *  }
+ */
+
 @Service
 public class GeoJsonParser {
     static Logger logger = Logger.getLogger(GeoJsonParser.class);
