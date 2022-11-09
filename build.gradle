@@ -19,7 +19,9 @@ dependencies {
 			'org.jboss.logging:jboss-logging:3.5.0.Final',
 			'com.google.code.gson:gson:2.10',
 			'io.springfox:springfox-boot-starter:3.0.0',
-			'com.azure.spring:spring-cloud-azure-starter-storage-blob:4.4.1'
+			'com.azure.spring:spring-cloud-azure-starter-storage-blob:4.4.1',
+			'com.azure.resourcemanager:azure-resourcemanager:2.20.0',
+			'com.azure:azure-identity:1.7.0'
 	)
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

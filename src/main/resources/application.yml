@@ -13,6 +13,6 @@ spring:
     azure:
       storage:
         blob:
-          account-name: ${accountName}
-          account-key: ${key}
+          account-name: ${AZURE_STORAGE_ACCOUNT}
+          account-key: ${AZURE_STORAGE_ACCESS_KEY}
           endpoint: ${blobEndpoint}
