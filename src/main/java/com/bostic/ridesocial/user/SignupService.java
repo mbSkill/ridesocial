@@ -14,10 +14,7 @@ public class SignupService {
                 "+@" +
                 "[a-zA-Z0-9.-]" +
                 "+$";
-
-        var RFCemailPattern = Pattern.compile(regex);
-        var matcher = RFCemailPattern.matcher(email);
-        return matcher.matches();
+        return email.matches(regex);
     }
 
     boolean emailExists(String email){
@@ -36,9 +33,13 @@ public class SignupService {
     }
 
     public User saveNewUser(User user){
-        /**
-         * TODO: check if username exists
-         **/
+        if(validateEmail(user.getEmail()) &&
+            !emailExists(user.getEmail()) &&
+            validatePassword(user.getPassword()) &&
+            isUniqueUsername(user.getUsername())){
+            return repository.save(user);
+        }
+
         return new User();
     }
 }
