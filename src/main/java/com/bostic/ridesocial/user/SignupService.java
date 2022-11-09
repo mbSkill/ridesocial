@@ -25,21 +25,14 @@ public class SignupService {
     }
 
     boolean validatePassword(String password){
-
-        String regex = "^" +
-                "(?=.*[0-9])" +
-                "(?=.*[a-z])" +
-                "(?=.*[A-Z])" +
-                "(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\\])" +
-                ".{8,32}$";
-
-        var passwordStandards = Pattern.compile(regex);
-        var matcher = passwordStandards.matcher(password);
-        return matcher.matches();
+        //requires one uppercase/lowercase/numeric/no whitespace
+        //and at least one symbol from [!@#$%] with a length of 8-32
+        return password.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%])(?!.*\\s).{8,32}");
     }
 
-    boolean isUniqueUsername(){
-        return true;
+    boolean isUniqueUsername(String username){
+        return username.isBlank() ? Boolean.FALSE :
+                repository.existsByUsername(username);
     }
 
     public User saveNewUser(User user){
