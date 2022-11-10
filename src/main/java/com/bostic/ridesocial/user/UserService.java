@@ -43,4 +43,8 @@ public class UserService {
         }
         return new User();
     }
+
+    public void getUser(String email) {
+        repository.findById(email);
+    }
 }

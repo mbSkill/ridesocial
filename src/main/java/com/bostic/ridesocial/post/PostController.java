@@ -19,8 +19,17 @@ public class PostController {
     }
 
     @PostMapping()
-    public String createPost(@RequestParam("username") String username, @RequestParam("image") MultipartFile multipartFile ) throws IOException {
-        return azureImageService.SaveImage(multipartFile, username);
+    public String createPost(@RequestParam("email") String email,
+                             @RequestParam("paragraph") String paragraph,
+                             @RequestParam("image") MultipartFile multipartFile ) throws IOException {
+       try{
+           String azureBlobURL =  azureImageService.SaveImage(multipartFile, username);
+           postService.savePost(email,paragraph,azureBlobURL);
+       } catch (Exception e){
+
+       }
+
+        return "";
     }
 
 
