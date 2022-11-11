@@ -14,8 +14,8 @@ class PostServiceTest {
 
     @Test
     public void timeStampWorks(){
-        System.out.println(service.getDateTimeNow());
-        assertNotNull(service.getDateTimeNow(),service.getDateTimeNow().toString());
+        System.out.println(service.getTimestamp());
+        assertNotNull(service.getTimestamp(),service.getTimestamp().toString());
     }
 
 }

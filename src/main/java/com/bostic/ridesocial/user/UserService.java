@@ -2,6 +2,8 @@ package com.bostic.ridesocial.user;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     UserRepository repository;
@@ -44,7 +46,7 @@ public class UserService {
         return new User();
     }
 
-    public void getUser(String email) {
-        repository.findById(email);
+    public Optional<User> getUser(String email) {
+        return repository.findById(email);
     }
 }

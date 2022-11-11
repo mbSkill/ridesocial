@@ -26,22 +26,21 @@ public class PostService {
     }
 
     public boolean paragraphValid(String paragraph){
-        return paragraph.length() >= 300;
+        return paragraph.length() <= 300;
     }
 
-    public boolean userEmailExists(String email){
-       return !email.isBlank() && userService.emailExists(email);
-    }
 
-    public int savePost(String email,String paragraph, String azureBlobURL) {
-        if(paragraphValid(paragraph) &&
-                userEmailExists(email){
-            Post post = new Post();
-            post.setUser(userService.getUser(email));
-            post.setParagraph(paragraph);
-            post.setImage(azureBlobURL);
-            post.setCreatedOn(getTimestamp());
+    public long savePost(String email,String paragraph, String azureBlobURL) {
+        var user = userService.getUser(email);
+        if( user.isPresent() &&
+            paragraphValid(paragraph)){
+                Post post = new Post();
+                post.setUser(user.get());
+                post.setParagraph(paragraph);
+                post.setImage(azureBlobURL);
+                post.setCreatedOn(getTimestamp());
+            return repository.save(post).getId();
         }
-        return repository.save().getId();
+        return -1;
     }
 }
