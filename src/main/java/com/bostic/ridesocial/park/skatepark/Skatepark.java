@@ -74,8 +74,8 @@ public class Skatepark extends Park {
 
     public void setCoordinates(String[] coord){
         if (coord.length == 2){
-        latitude = coord[0];
-        longitude = coord[1];
+        latitude = coord[1];
+        longitude = coord[0];
         }
     }
 }

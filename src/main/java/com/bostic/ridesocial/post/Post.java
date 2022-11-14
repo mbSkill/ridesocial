@@ -38,6 +38,7 @@ public class Post {
     }
 
     public User getUser() {
+        user.setPassword("");
         return user;
     }
 

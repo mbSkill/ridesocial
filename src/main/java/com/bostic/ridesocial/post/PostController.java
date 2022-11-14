@@ -3,14 +3,18 @@ package com.bostic.ridesocial.post;
 import com.bostic.ridesocial.azure.AzureImageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/post")
 public class PostController {
     private static final Logger logger =
@@ -22,6 +26,12 @@ public class PostController {
         this.postService = postService;
         this.azureImageService = azureImageService;
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Post>> findAll(){
+        return new ResponseEntity<>(postService.getAllPost(), HttpStatus.OK);
+    }
+
 
     @PostMapping()
     public RedirectView createPost(@RequestParam("email") String email,

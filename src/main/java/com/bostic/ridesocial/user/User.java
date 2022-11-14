@@ -30,7 +30,6 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PostService {
@@ -19,6 +20,10 @@ public class PostService {
     public PostService(PostRepository repository, UserService userService) {
         this.repository = repository;
         this.userService = userService;
+    }
+
+    public List<Post> getAllPost(){
+        return repository.findAll();
     }
 
     public Timestamp getTimestamp(){
